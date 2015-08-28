@@ -42,6 +42,33 @@
             return $this->id;
         }
 
+        function save()
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stores (name, location) VALUES ('{$this->getName()}', '{$this->getLocation()}')");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+        //////////////////Static functions////////////////////////////
+
+        static function getAll()
+        {
+            $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores");
+            $stores = array();
+            foreach($returned_stores as $store) {
+                $name = $store['name'];
+                $location = $store['location'];
+                $id = $store['id'];
+                $new_store = new Store($name, $location, $id);
+                array_push($stores, $new_store);
+            }
+
+            return $stores;
+        }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stores");
+        }
 
 
     }
