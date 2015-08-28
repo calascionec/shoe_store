@@ -195,6 +195,44 @@
             $this->assertEquals($test_store2, $result);
         }
 
+        function testUpdateName()
+        {
+            //Arrange
+            $name = "shoe store";
+            $location = "1234 nw 1st street";
+            $id = 4;
+            $test_store = new Store($name, $location, $id);
+            $test_store->save();
+
+            $new_name = "New Store";
+
+            //Act
+            $test_store->updateName($new_name);
+            $result = $test_store->getName();
+
+            //Assert
+            $this->assertEquals($new_name, $result);
+        }
+
+        function testUpdateLocation()
+        {
+            //Arrange
+            $name = "shoe store";
+            $location = "1234 nw 1st street";
+            $id = 4;
+            $test_store = new Store($name, $location, $id);
+            $test_store->save();
+
+            $new_location = "5555 sw 3rd street";
+
+            //Act
+            $test_store->updateLocation($new_location);
+            $result = $test_store->getLocation();
+
+            //Assert
+            $this->assertEquals($new_location, $result);
+        }
+
 
 
 

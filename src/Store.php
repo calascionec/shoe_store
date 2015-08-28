@@ -48,6 +48,18 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        function updateName($new_name)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stores name SET '{$new_name}' WHERE id = {$this->id}");
+            $this->name = $new_name;
+        }
+
+        function updateLocation($new_location)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stores location SET '{$new_location}' WHERE id = {$this->id}");
+            $this->location = $new_location;
+        }
+
         //////////////////Static functions////////////////////////////
 
         static function getAll()
