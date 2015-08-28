@@ -22,7 +22,7 @@
         protected function tearDown()
         {
             Store::deleteAll();
-            // Brand::deleteAll();
+            Brand::deleteAll();
         }
 
 

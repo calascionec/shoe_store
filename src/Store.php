@@ -41,7 +41,9 @@
         {
             return $this->id;
         }
+        ////////////////End Getters and Setters/////////////
 
+        
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO stores (name, location) VALUES ('{$this->getName()}', '{$this->getLocation()}')");
