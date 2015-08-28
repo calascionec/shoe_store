@@ -15,9 +15,15 @@
             <h2>Brands</h2>
             <ul>
                 {% for brand in brands %}
-                    <li>{{brand.getName}}</li>
+                    <li><a href="/brands/{{brand.getId}}"></a>{{brand.getName}}</li>
                 {% endfor %}
             </ul>
         {% endif %}
+
+        <form action='/brands' method='post'>
+            <input name="_method" type="hidden" value="delete">
+            <button type='submit'>Clear Brands</button>
+        </form>
+        <a href="/">Home</a>
     </body>
 </html>

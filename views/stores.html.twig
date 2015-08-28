@@ -25,5 +25,10 @@
             </ul>
         {% endif %}
 
+        <form action='/stores' method='post'>
+            <input name="_method" type="hidden" value="delete">
+            <button type='submit'>Clear Stores</button>
+        </form>
+        <a href="/">Home</a>
     </body>
 </html>

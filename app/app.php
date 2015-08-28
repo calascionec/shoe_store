@@ -38,6 +38,11 @@
         return $app['twig']->render("stores.html.twig", array("stores" => Store::getAll(), "brands" => Brand::getAll()));
     });
 
+    $app->delete("/stores", function() use ($app) {
+        Store::deleteAll();
+        return $app['twig']->render("stores.html.twig", array("stores" => Store::getAll(), "brands" => Brand::getAll()));
+    });
+
 
 
 
@@ -52,6 +57,11 @@
         $brand = new Brand($name);
         $brand->save();
 
+        return $app['twig']->render("brands.html.twig", array("stores" => Store::getAll(), "brands" => Brand::getAll()));
+    });
+
+    $app->delete("/brands", function() use ($app) {
+        Brand::deleteAll();
         return $app['twig']->render("brands.html.twig", array("stores" => Store::getAll(), "brands" => Brand::getAll()));
     });
 
