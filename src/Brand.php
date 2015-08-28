@@ -40,6 +40,7 @@
 
         function addStore($store)
         {
+
             $GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$this->id}, {$store->getId()})");
         }
 

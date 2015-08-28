@@ -18,6 +18,7 @@ This app allows users to add shoe stores and add the brands of shoes that each s
     2. USE shoes;
     3.CREATE TABLE stores (id SERIAL PRIMARY KEY, name VARCHAR(255), location VARCHAR (255));
     4.CREATE TABLE brand (id SERIAL PRIMARY KEY, name VARCHAR (255));
+    5.CREATE TABLE brands_stores (id SERIAL PRIMARY KEY, brand_id INT, store_id INT, UNIQUE(brand_id, store_id));
 
 5. Start PHP server in web directory
 6. Navigate to localhost:8000
