@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Stores</title>
+    </head>
+    <body>
+        <h1>Add a Store</h1>
+        <form action="/stores" method="post">
+            <label for="name">Store Name:</label>
+            <input type="text" name="name" id="name">
+
+            <label for="location">Store Location:</label>
+            <input type="text" name="location" id="location">
+
+            <button type="submit">Submit</button>
+
+        </form>
+
+        {% if stores is not empty %}
+            <h2>Stores:</h2>
+            <ul>
+                {% for store in stores %}
+                    <li>{{store.getName}}<li>
+                    <li>{{store.getLocation}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    </body>
+</html>

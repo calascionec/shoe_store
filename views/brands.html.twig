@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Brands</title>
+    </head>
+    <body>
+        <h1>Add a Brand</h1>
+        <form action="/brands" method="post">
+            <label for="name">Brand Name</label>
+            <input type="text" name="name" id="name">
+
+            <button type="sumbit">Submit</button>
+        </form>
+
+        {% if brands is not empty %}
+            <h2>Brands</h2>
+            <ul>
+                {% for brand in brands %}
+                    <li>{{brand.getName}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </body>
+</html>
