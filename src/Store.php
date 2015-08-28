@@ -43,7 +43,7 @@
         }
         ////////////////End Getters and Setters/////////////
 
-        
+
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO stores (name, location) VALUES ('{$this->getName()}', '{$this->getLocation()}')");
@@ -60,6 +60,24 @@
         {
             $GLOBALS['DB']->exec("INSERT INTO stores location SET '{$new_location}' WHERE id = {$this->id}");
             $this->location = $new_location;
+        }
+
+        function addBrand($brand)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$brand->getId()}, {$this->id})");
+        }
+
+        function getBrands()
+        {
+            $returned_brands = $GLOBALS['DB']->query("SELECT brands.* FROM stores JOIN brands_stores ON (stores.id = brands_stores.store_id) JOIN brands ON (brands.id = brands_stores.brand_id) WHERE stores.id = {$this->id}");
+            $brands = array();
+            foreach($returned_brands as $brand){
+                $name = $brand["name"];
+                $id = $brand["id"];
+                $new_brand = new Brand($name, $id);
+                array_push($brands, $new_brand);
+            }
+            return $brands;
         }
 
         //////////////////Static functions////////////////////////////
