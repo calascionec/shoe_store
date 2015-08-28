@@ -131,5 +131,35 @@
 
         }
 
+        function testgetStores()
+        {
+            //Arrange
+            $name = "Nike";
+            $id = 1;
+            $test_brand = new Brand($name, $id);
+            $test_brand->save();
+
+            $name1 = "shoe store";
+            $location = "1234 nw 1st street";
+            $id1 = 4;
+            $test_store = new Store($name1, $location, $id1);
+            $test_store->save();
+
+            $name2 = "other store";
+            $location2 = "5555 nw 5th street";
+            $id2 = 3;
+            $test_store2 = new Store($name2, $location2, $id2);
+            $test_store2->save();
+
+            //Act
+            $test_brand->addStore($test_store);
+            $test_brand->addStore($test_store2);
+            $result = $test_brand->getStores();
+
+            //Assert
+            $this->assertEquals([$test_store, $test_store2], $result);
+
+        }
+
     }
  ?>
