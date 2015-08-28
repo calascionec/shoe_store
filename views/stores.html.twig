@@ -6,24 +6,30 @@
         <h1>Add a Store</h1>
         <form action="/stores" method="post">
             <label for="name">Store Name:</label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" required>
 
             <label for="location">Store Location:</label>
-            <input type="text" name="location" id="location">
+            <input type="text" name="location" id="location" required>
 
             <button type="submit">Submit</button>
 
         </form>
 
         {% if stores is not empty %}
-            <h2>Stores:</h2>
+            <h3>Here are a list of stores!</h3>
             <ul>
                 {% for store in stores %}
-                    <li>{{store.getName}}<li>
-                    <li>{{store.getLocation}}</li>
+                    <ul>
+                        <li><a href="/store/{{store.getID}}">{{store.getName}}</a></li>
+                        <ul><li>{{store.getLocation}}</li></ul>
+                    </ul>
+
                 {% endfor %}
             </ul>
+        {% else %}
+            <h3>There are currently no stores</h3>
         {% endif %}
+
 
         <form action='/stores' method='post'>
             <input name="_method" type="hidden" value="delete">

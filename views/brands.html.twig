@@ -6,7 +6,7 @@
         <h1>Add a Brand</h1>
         <form action="/brands" method="post">
             <label for="name">Brand Name</label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" required>
 
             <button type="sumbit">Submit</button>
         </form>
@@ -15,7 +15,7 @@
             <h2>Brands</h2>
             <ul>
                 {% for brand in brands %}
-                    <li><a href="/brands/{{brand.getId}}"></a>{{brand.getName}}</li>
+                    <li><a href="/brand/{{brand.getId}}">{{brand.getName}}</a></li>
                 {% endfor %}
             </ul>
         {% endif %}
