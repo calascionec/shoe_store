@@ -171,6 +171,30 @@
 
         }
 
+        function testFind()
+        {
+            //Arrange
+            $name = "shoe store";
+            $location = "1234 nw 1st street";
+            $id = 4;
+            $test_store = new Store($name, $location, $id);
+
+            $test_store->save();
+
+            $name2 = "other store";
+            $location2 = "5555 sw 2nd street";
+            $id2 = 3;
+            $test_store2 = new Store($name2, $location2, $id2);
+
+            $test_store2->save();
+
+            //Act
+            $result = Store::find($test_store2->getId());
+
+            //Assert
+            $this->assertEquals($test_store2, $result);
+        }
+
 
 
 
